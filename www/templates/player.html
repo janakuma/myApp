@@ -1,0 +1,74 @@
+<ion-view view-title="Player">
+  <ion-content>
+
+	<style>
+
+		.musicWrap {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			background: url('/img/blur-bg.jpg') center bottom no-repeat;
+			background-size: cover;
+			color: #fff;
+		}
+		.screen {flex: 1;}
+		.circleLine {
+			box-sizing: border-box; overflow: hidden;
+			display: flex; width: 280px; height: 280px; margin: 0 auto;
+			justify-content: center; align-items: center;
+			border-radius: 50%; border: 2px solid #e22b49;
+		}
+		.poster {overflow: hidden; width: 245px; height: 245px; border-radius: 50%;}
+		.poster img {width: 100%; height: 100%;}
+		.control {
+			display: flex; justify-content: space-around; align-items: center;
+			height: 80px; padding: 0 40px; background-color: rgba(255,255,255,0.2);
+		}
+		.control button {
+			width: 45px; height: 45px;
+			background-color: transparent;
+			border: 2px solid rgba(255,255,255,0.8);
+			border-radius: 50%;
+		}
+		.song-title, .time {padding: 20px 0; font-size: 20px; text-align: center;}
+		pre {text-align: center;}
+
+		.seekBase {height: 3px; background-color: #666;}
+		.seekBase .seekLoad {width: 0; height: 3px; background-color: #e22b49;}
+	</style>
+
+
+  	<article class="musicWrap">
+  		<div class="screen">
+			<p class="song-title">{{currentPlaying.title}}</p>
+  			<div class="circleLine">
+	  			<figure class="poster">
+	  				<img src="/img/_sample.jpg" alt="">
+	  			</figure>
+  			</div>
+  			<p class="time">{{ currentPostion }} / {{ currentDuration }}</p>
+
+  			<pre>
+Queen - Too Much Love Will Kill You
+I'm just the pieces
+  			</pre>
+  		</div>
+
+		<!-- progressbar -->
+		<div class="seekBase" seek-track>
+			<div class="seekLoad" ng-style="{width:(progress + '%')}"></div>
+		</div>
+  		<!-- //progressbar -->
+
+  		<nav class="control">
+
+  			<button prev-track>Prev Track</button>
+  			<button play-pause-toggle data-play="Play!" data-pause="Pause!">Play Toggle</button>
+  			<button next-track>Next Track</button>
+  		</nav>
+  	</article>
+
+  	<sound-manager></sound-manager>
+
+  </ion-content>
+</ion-view>
